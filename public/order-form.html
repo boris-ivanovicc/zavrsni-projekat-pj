@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>order-form</title>
+  <link rel="stylesheet" href="MojCss.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <a href="index.html"><img src="images/ravens-quill.png"></a>
+  </header>
+   <nav class="nav">
+  <ul>
+    <li>
+      <h2><a href="prices.html">Prices</a></h2>
+    </li>
+    <li>
+      <h2><a href="order-form.html">Order Form</a></h2>
+    </li>
+    <li>
+      <h2><a href="users-editing-orders.html">Users & Editing Orders</a></h2>
+    </li>
+  </ul>
+</nav>
+  <p class="p-order">Please fill in the fields below & accept our Terms of Service to create your personalized poem with
+    your chosen writer. </p>
+
+  <form id="poemOrderForm" >
+    <table class="table">
+      <tr>
+        <td><label for="firstName">First Name:</label></td>
+        <td>
+          <input type="text" id="firstName" name="firstName" placeholder="Your first name" />
+          <div id="firstNameError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="lastName">Last Name:</label></td>
+        <td>
+          <input type="text" id="lastName" name="lastName" placeholder="Your last name" />
+          <div id="lastNameError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="email">Email:</label></td>
+        <td>
+          <input type="email" id="email" name="email" placeholder="you@example.com" />
+          <div id="emailError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="phone">Phone Number:</label></td>
+        <td>
+          <input type="tel" id="phone" name="phone" placeholder="+381 123456789" />
+          <div id="phoneError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="writingTheme">Writing Theme:</label></td>
+        <td>
+          <input type="text" id="writingTheme" name="writingTheme" placeholder="E.g. love, mystery, adventure" />
+          <div id="writingThemeError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="writerSelect">Choose a Writer:</label></td>
+        <td>
+          <select id="writerSelect" name="writerSelect">
+            <option value="">Select which writter do you want</option>
+            <option value="rowenHollowbeak">Rowen Hollowbeak</option>
+            <option value="talonWindmere">Talon Windmere</option>
+            <option value="corbinNightwing">Corbin Nightwing</option>
+            <option value="nellaAshfeather">Nella Ashfeather</option>
+            <option value="peregrineRavenshawk">Peregrine Ravenshawk</option>
+            <option value="eliraGreycrow">Elira Greycrow</option>
+          </select>
+          <div id="writerError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="notes">Additional Notes:</label></td>
+        <td>
+          <textarea id="notes" name="notes" rows="4" placeholder="Your instructions here"></textarea>
+          <div id="notesError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="ToS">Terms of Service:</label></td>
+        <td>
+          <input type="checkbox" id="ToS" name="ToS" />
+          <label for="ToS">I agree to the Terms of Service</label>
+          <div id="tosError" class="error-msg"></div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Submit" />
+        </td>
+      </tr>
+    </table>
+  </form>
+
+
+  
+</body>
+</html>
