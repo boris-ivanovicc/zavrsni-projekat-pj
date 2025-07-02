@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,24 +7,16 @@
   <link rel="stylesheet" href="MojCss.css" type="text/css" />
   <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet" />
 </head>
-
 <body>
-
   <header class="header">
     <a href="index.html"><img src="images/ravens-quill.png" alt="Logo" /></a>
   </header>
 
   <nav class="nav">
     <ul>
-      <li>
-        <h2><a href="prices.html">Prices</a></h2>
-      </li>
-      <li>
-        <h2><a href="order-form.html">Order Form</a></h2>
-      </li>
-      <li>
-        <h2><a href="users-editing-orders.html">Users & Editing Orders</a></h2>
-      </li>
+      <li><h2><a href="prices.html">Prices</a></h2></li>
+      <li><h2><a href="order-form.html">Order Form</a></h2></li>
+      <li><h2><a href="users-editing-orders.html">Users & Editing Orders</a></h2></li>
     </ul>
   </nav>
 
@@ -33,19 +24,90 @@
     <table class="table">
       <thead>
         <tr>
-          <th>First Name</th>
+          <th>ID</th>
+          <th>Name</th>
           <th>Last Name</th>
           <th>Email</th>
           <th>Phone Number</th>
           <th>Writing Theme</th>
           <th>Writer</th>
           <th>Additional Note</th>
+          <th>Updated</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody id="submission-body"> </tbody>
+      <tbody id="table"></tbody>
     </table>
   </div>
-</body>
 
+  <template id="template">
+    <tr>
+      <td class="id"></td>
+      <td class="ime"></td>
+      <td class="prezime"></td>
+      <td class="email"></td>
+      <td class="telefon"></td>
+      <td class="theme"></td>
+      <td class="writer"></td>
+      <td class="note"></td>
+      <td class="updatedAt"></td>
+      <td>
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+      </td>
+    </tr>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const table = document.getElementById('table');
+    const template = document.getElementById('template');
+
+    function loadPoemRequests() {
+      table.innerHTML = '';
+      axios.get('http://localhost:8080/api/poemRequest')
+        .then(response => {
+          response.data.forEach(poem => {
+            const clone = template.content.cloneNode(true);
+            clone.querySelector('.id').textContent = poem.id;
+            clone.querySelector('.ime').textContent = poem.customer.firstName;
+            clone.querySelector('.prezime').textContent = poem.customer.lastName;
+            clone.querySelector('.email').textContent = poem.customer.email;
+            clone.querySelector('.telefon').textContent = poem.customer.phone;
+            clone.querySelector('.theme').textContent = poem.poemTheme;
+            clone.querySelector('.writer').textContent = poem.poet.poetName;
+            clone.querySelector('.note').textContent = poem.additionalNote || '';
+            clone.querySelector('.updatedAt').textContent = poem.updatedAt || '—';
+
+          
+            clone.querySelector('.edit').addEventListener('click', () => {
+              window.location.href = `order-form.html?editId=${poem.id}`;
+            });
+
+        
+            clone.querySelector('.delete').addEventListener('click', function () {
+              if (confirm(`Are you sure you want to delete poem request #${poem.id}?`)) {
+                axios.delete(`http://localhost:8080/api/poemRequest/${poem.id}`)
+                  .then(() => {
+                    alert('Poem request deleted successfully.');
+                    this.closest('tr').remove(); 
+                  })
+                  .catch(error => {
+                    console.error(error);
+                    alert('Error deleting the request.');
+                  });
+              }
+            });
+
+            table.appendChild(clone);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching poem requests:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadPoemRequests);
+  </script>
+</body>
 </html>

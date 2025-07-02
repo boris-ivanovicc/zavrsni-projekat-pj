@@ -1,111 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>order-form</title>
-  <link rel="stylesheet" href="MojCss.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Form</title>
+  <link rel="stylesheet" href="MojCss.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet" />
 </head>
-
 <body>
   <header class="header">
-    <a href="index.html"><img src="images/ravens-quill.png"></a>
+    <a href="index.html"><img src="images/ravens-quill.png" alt="Logo"></a>
   </header>
-   <nav class="nav">
-  <ul>
-    <li>
-      <h2><a href="prices.html">Prices</a></h2>
-    </li>
-    <li>
-      <h2><a href="order-form.html">Order Form</a></h2>
-    </li>
-    <li>
-      <h2><a href="users-editing-orders.html">Users & Editing Orders</a></h2>
-    </li>
-  </ul>
-</nav>
-  <p class="p-order">Please fill in the fields below & accept our Terms of Service to create your personalized poem with
-    your chosen writer. </p>
 
-  <form id="poemOrderForm" >
+  <nav class="nav">
+    <ul>
+      <li><h2><a href="prices.html">Prices</a></h2></li>
+      <li><h2><a href="order-form.html">Order Form</a></h2></li>
+      <li><h2><a href="users-editing-orders.html">Users & Editing Orders</a></h2></li>
+    </ul>
+  </nav>
+
+  <p class="p-order">
+    Please fill in the fields below & accept our Terms of Service to create your personalized poem with your chosen writer.
+  </p>
+
+  <form id="poemOrderForm">
     <table class="table">
       <tr>
-        <td><label for="firstName">First Name:</label></td>
-        <td>
-          <input type="text" id="firstName" name="firstName" placeholder="Your first name" />
-          <div id="firstNameError" class="error-msg"></div>
-        </td>
+        <td><label for="firstName">First Name: <span style="color: red">*</span></label></td>
+        <td><input type="text" id="firstName" name="firstName" placeholder="Your first name" required /></td>
       </tr>
       <tr>
-        <td><label for="lastName">Last Name:</label></td>
-        <td>
-          <input type="text" id="lastName" name="lastName" placeholder="Your last name" />
-          <div id="lastNameError" class="error-msg"></div>
-        </td>
+        <td><label for="lastName">Last Name: <span style="color: red">*</span></label></td>
+        <td><input type="text" id="lastName" name="lastName" placeholder="Your last name" required /></td>
       </tr>
       <tr>
-        <td><label for="email">Email:</label></td>
-        <td>
-          <input type="email" id="email" name="email" placeholder="you@example.com" />
-          <div id="emailError" class="error-msg"></div>
-        </td>
+        <td><label for="email">Email: <span style="color: red">*</span></label></td>
+        <td><input type="email" id="email" name="email" placeholder="you@example.com" required /></td>
       </tr>
       <tr>
-        <td><label for="phone">Phone Number:</label></td>
-        <td>
-          <input type="tel" id="phone" name="phone" placeholder="+381 123456789" />
-          <div id="phoneError" class="error-msg"></div>
-        </td>
+        <td><label for="phone">Phone Number: <span style="color: red">*</span></label></td>
+        <td><input type="tel" id="phone" name="phone" placeholder="+381 123456789" required /></td>
       </tr>
       <tr>
-        <td><label for="writingTheme">Writing Theme:</label></td>
-        <td>
-          <input type="text" id="writingTheme" name="writingTheme" placeholder="E.g. love, mystery, adventure" />
-          <div id="writingThemeError" class="error-msg"></div>
-        </td>
+        <td><label for="writingTheme">Writing Theme: <span style="color: red">*</span></label></td>
+        <td><input type="text" id="writingTheme" name="writingTheme" placeholder="E.g. love, mystery, adventure" required /></td>
       </tr>
       <tr>
-        <td><label for="writerSelect">Choose a Writer:</label></td>
+        <td><label for="writerSelect">Choose a Writer: <span style="color: red">*</span></label></td>
         <td>
-          <select id="writerSelect" name="writerSelect">
-            <option value="">Select which writter do you want</option>
-            <option value="rowenHollowbeak">Rowen Hollowbeak</option>
-            <option value="talonWindmere">Talon Windmere</option>
-            <option value="corbinNightwing">Corbin Nightwing</option>
-            <option value="nellaAshfeather">Nella Ashfeather</option>
-            <option value="peregrineRavenshawk">Peregrine Ravenshawk</option>
-            <option value="eliraGreycrow">Elira Greycrow</option>
+          <select id="writerSelect" name="writerSelect" required>
+            <option value="">Select which writer do you want</option>
           </select>
-          <div id="writerError" class="error-msg"></div>
         </td>
       </tr>
       <tr>
         <td><label for="notes">Additional Notes:</label></td>
-        <td>
-          <textarea id="notes" name="notes" rows="4" placeholder="Your instructions here"></textarea>
-          <div id="notesError" class="error-msg"></div>
-        </td>
-      </tr>
-      <tr>
-        <td><label for="ToS">Terms of Service:</label></td>
-        <td>
-          <input type="checkbox" id="ToS" name="ToS" />
-          <label for="ToS">I agree to the Terms of Service</label>
-          <div id="tosError" class="error-msg"></div>
-        </td>
+        <td><textarea id="notes" name="notes" rows="4" placeholder="Your instructions here"></textarea></td>
       </tr>
       <tr>
         <td></td>
-        <td>
-          <input type="submit" value="Submit" />
-        </td>
+        <td><input type="submit" value="Submit" /></td>
       </tr>
     </table>
   </form>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const select = document.getElementById("writerSelect");
+      const form = document.getElementById("poemOrderForm");
+      const urlParams = new URLSearchParams(window.location.search);
+      const editId = urlParams.get("editId");
+      let customerId = null; 
 
-  
+
+      axios.get("http://localhost:8080/api/poet")
+        .then(res => {
+          res.data.forEach(poet => {
+            const option = document.createElement("option");
+            option.value = poet.id;
+            option.textContent = poet.poetName;
+            select.appendChild(option);
+          });
+        })
+        .catch(err => {
+          console.error("Error when loading the writer:", err);
+        });
+
+
+      if (editId) {
+        axios.get(`http://localhost:8080/api/poemRequest/${editId}`)
+          .then(res => {
+            const poem = res.data;
+            document.getElementById("firstName").value = poem.customer.firstName;
+            document.getElementById("lastName").value = poem.customer.lastName;
+            document.getElementById("email").value = poem.customer.email;
+            document.getElementById("phone").value = poem.customer.phone;
+            document.getElementById("writingTheme").value = poem.poemTheme;
+            document.getElementById("notes").value = poem.additionalNote || "";
+            document.getElementById("writerSelect").value = poem.poet.id;
+
+            customerId = poem.customer.id;
+          })
+
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const selectedPoetId = parseInt(select.value);
+        if (isNaN(selectedPoetId)) {
+          alert("Choose a writer please");
+          return;
+        }
+
+
+        const customerData = {
+          firstName: document.getElementById("firstName").value.trim(),
+          lastName: document.getElementById("lastName").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          phone: document.getElementById("phone").value.trim()
+        };
+
+
+        const poemData = {
+          poemTheme: document.getElementById("writingTheme").value.trim(),
+          additionalNote: document.getElementById("notes").value.trim() || "",
+          poet: { id: selectedPoetId }
+        };
+
+        if (editId) {
+
+          axios.put(`http://localhost:8080/api/customer/${customerId}`, customerData)
+            .then(() => {
+              return axios.put(`http://localhost:8080/api/poemRequest/${editId}`, { ...poemData, customer: { id: customerId } });
+            })
+            .then(() => {
+              alert("Your edit was successful!");
+              window.location.href = "users-editing-orders.html";
+            })
+            .catch(err => {
+              console.error("Error with updating:", err);
+              alert("There was an error while trying to udpating.");
+            });
+
+        } else {
+
+          axios.post("http://localhost:8080/api/customer", customerData)
+            .then(res => {
+              const newCustomerId = res.data.id;
+              return axios.post("http://localhost:8080/api/poemRequest", { ...poemData, customer: { id: newCustomerId } });
+            })
+            .then(() => {
+              alert("You successfully commissioned a poem!");
+              window.location.href = "users-editing-orders.html";
+            })
+            .catch(err => {
+              console.error("Error while create an order:", err);
+              alert("There was an error when trying to create the commision.");
+            });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
